@@ -28,6 +28,11 @@ El ensayo genera una clave efímera y datos ficticios; no accede a producción. 
 
 La programación queda omitida hasta configurar la variable. Su existencia no acredita ejecución real. Configurar estos accesos requiere autorización del titular. La restauración implementada solo permite un emulador y un destino demo separado: no sobrescribe producción.
 
-## Estado
+## Resultados verificados — 19 de noviembre de 2026
 
-Aplicación y despliegue existentes enlazados arriba. Ensayo local aprobado. El respaldo diario de producción, la nueva publicación de artículos y el video específico de backup aún requieren configuración/publicación. No se afirman como completados.
+- [Respaldo real ejecutado correctamente](https://github.com/AntonyS3010/nosql-backup-firestore/actions/runs/44604077581): 0 tareas en el origen al consultar; artefacto cifrado de 434 bytes.
+- Se descargó ese artefacto, se descifró y se comprobó en otro proyecto del emulador: 0 documentos, SHA-256 coincidente. Una copia vacía no demuestra recuperación de datos no vacíos.
+- [Ensayo automático con datos ficticios aprobado](https://github.com/AntonyS3010/nosql-backup-firestore/actions/runs/44604023972): una tarea recuperada exactamente, corrupción y destinos inválidos rechazados.
+- La cuenta lectora y los dos secretos del repositorio están configurados. Se usa OAuth de la cuenta de servicio sin impersonación ni permisos de escritura. La programación diaria está configurada; esta evidencia corresponde a una ejecución manual, no a una ejecución del cron.
+
+La publicación de los nuevos artículos y del video específico de backup se gestiona por separado.

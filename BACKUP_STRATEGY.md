@@ -13,7 +13,7 @@ La herramienta admite hasta 1000 documentos. Consulta 1001 y falla si excede el 
 - Programación diaria a las 08:00 UTC (03:00 de Perú), más ejecución manual.
 - RPO objetivo: 24 horas, condicionado a ejecuciones exitosas; Actions puede retrasar o desactivar programaciones. Revisar diariamente la última ejecución y ejecutar manualmente ante un fallo.
 - Retención configurada: 7 días. Descargar periódicamente una copia cifrada a otro medio administrado por el equipo. Esa copia externa es una tarea operativa, no un paso automatizado por este proyecto.
-- Cifrado AES-256-GCM antes de subir un artefacto. `BACKUP_KEY` debe ser una clave aleatoria de 32 bytes en Base64, guardada como secreto del entorno `backups`. Conservar también una copia de la clave en un gestor independiente; perderla impide recuperar los datos. Nunca incorporarla al repositorio, al video ni a un artículo.
+- Cifrado AES-256-GCM antes de subir un artefacto. `BACKUP_KEY` debe ser una clave aleatoria de 32 bytes en Base64, guardada como secreto de Actions del repositorio, utilizado por el trabajo del entorno `backups`. Conservar también una copia de la clave en un gestor independiente; perderla impide recuperar los datos. Nunca incorporarla al repositorio, al video ni a un artículo.
 - La cuenta del respaldo solo necesita lectura del proyecto dedicado (`roles/datastore.viewer`). Su JSON se configura en `FIRESTORE_BACKUP_SERVICE_ACCOUNT`; el token OAuth temporal no se imprime.
 - El artefacto cifrado de un repositorio público puede ser descargable por personas con acceso a Actions. El cifrado protege el contenido; no publicar datos reales de terceros sin autorización.
 
@@ -46,6 +46,10 @@ La app existente se publica en GitHub Pages mediante su propio `deploy.yml`; est
 
 Repositorio: https://github.com/AntonyS3010/nosql-backup-firestore
 
-La app existente está disponible en https://antonys3010.github.io/campus-tareas-nosql/ . Credenciales de lectura para el respaldo, ejecución programada real, nuevos artículos y video de backup: pendientes de configuración y publicación. No se modifica la app ni se activa facturación.
+La app existente está disponible en https://antonys3010.github.io/campus-tareas-nosql/ . La cuenta de servicio lectora y los secretos están configurados. El 19/11/2026 se ejecutó manualmente el respaldo real: https://github.com/AntonyS3010/nosql-backup-firestore/actions/runs/44604077581 . Resultado: 0 tareas, copia cifrada de 434 bytes, descargada y verificada en el emulador. SHA-256 del contenido: `4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945`.
+
+La fuente estaba vacía. La recuperación de datos no vacíos se acredita mediante el ensayo sintético en CI: https://github.com/AntonyS3010/nosql-backup-firestore/actions/runs/44604023972 . No se ha observado todavía una ejecución diaria del cron. Los artículos y el video son publicaciones independientes. No se modifica la app ni se activa facturación.
+
+El token se obtiene mediante intercambio OAuth de una aserción JWT firmada por la cuenta de servicio, sin habilitar IAM Credentials ni conceder permisos de creación de tokens por impersonación. Referencia: https://developers.google.com/identity/protocols/oauth2/service-account .
 
 Fuentes: https://firebase.google.com/docs/firestore/manage-data/export-import ; https://firebase.google.com/docs/firestore/reference/rest/v1/projects.databases.documents/runQuery ; https://docs.github.com/en/actions/tutorials/store-and-share-data
