@@ -1,0 +1,36 @@
+name: Respaldo cifrado de tareas
+on:
+  schedule:
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  backup:
+    if: vars.FIREBASE_PROJECT_ID != ''
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    environment: backups
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - id: auth
+        uses: google-github-actions/auth@v3
+        with:
+          credentials_json: ${{ secrets.FIRESTORE_BACKUP_SERVICE_ACCOUNT }}
+          token_format: access_token
+          access_token_scopes: https://www.googleapis.com/auth/datastore
+      - name: Exportar únicamente tareas y cifrar
+        env:
+          BACKUP_ACCESS_TOKEN: ${{ steps.auth.outputs.access_token }}
+          BACKUP_KEY: ${{ secrets.BACKUP_KEY }}
+          FIREBASE_PROJECT_ID: ${{ vars.FIREBASE_PROJECT_ID }}
+        run: node scripts/backup.mjs backup "$FIREBASE_PROJECT_ID" backups/tasks.enc.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tasks-encrypted-${{ github.run_id }}
+          path: backups/tasks.enc.json
+          retention-days: 7
+          if-no-files-found: error

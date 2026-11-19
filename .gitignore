@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.firebase/
+*-debug.log
+.env*
+!.env.example
+playwright-report/
+test-results/
+
+backups/
+gha-creds-*.json
