@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Una bitácora de tareas con almacenamiento de documentos en Cloud Firestore." />
+    <title>Bitácora NoSQL</title>
+  </head>
+  <body>
+    <header><a class="brand" href="/">b<span>.</span> Bitácora</a><span class="tag">FIRESTORE / NoSQL</span></header>
+    <main>
+      <section class="intro"><p class="eyebrow">UN PENDIENTE MENOS, UNA IDEA MÁS</p><h1>Haz espacio para<br />lo que sigue<span>.</span></h1><p>Escribe una tarea, complétala y sigue avanzando.</p></section>
+      <section class="board" aria-labelledby="board-title">
+        <div class="board-heading"><h2 id="board-title">Mis tareas</h2><span id="counter">0 pendientes</span></div>
+        <form id="task-form"><label for="title">Nueva tarea</label><div class="input-row"><input id="title" name="title" maxlength="100" required placeholder="¿Qué quieres hacer hoy?" autocomplete="off" /><button id="add" disabled>Agregar <span aria-hidden="true">↗</span></button></div></form>
+        <p id="status" role="status" aria-live="polite">Conectando con tu espacio…</p>
+        <ul id="tasks" aria-label="Lista de tareas"></ul>
+        <div id="empty" hidden><span aria-hidden="true">✓</span><h3>Tu lista empieza aquí</h3><p>Agrega tu primera tarea para empezar.</p></div>
+      </section>
+      <p class="session-note">Tus tareas pertenecen a la sesión de este navegador. No necesitas registrarte. Si borras sus datos, perderás el acceso a esta sesión.</p>
+    </main>
+    <footer><span>Antony Piero Solorzano Zegarra<br />Adriana Rafaela Laos Gonzales</span><span>Proyecto de construcción y despliegue<br />Base de datos documental · Firebase Hosting</span></footer>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
