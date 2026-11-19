@@ -35,4 +35,4 @@ La programación queda omitida hasta configurar la variable. Su existencia no ac
 - [Ensayo automático con datos ficticios aprobado](https://github.com/AntonyS3010/nosql-backup-firestore/actions/runs/44604023972): una tarea recuperada exactamente, corrupción y destinos inválidos rechazados.
 - La cuenta lectora y los dos secretos del repositorio están configurados. Se usa OAuth de la cuenta de servicio sin impersonación ni permisos de escritura. La programación diaria está configurada; esta evidencia corresponde a una ejecución manual, no a una ejecución del cron.
 
-La publicación de los nuevos artículos y del video específico de backup se gestiona por separado.
+[Video de la construcción y las pruebas en YouTube — 4:01](https://www.youtube.com/watch?v=c46pOm-C_8I), publicado el 19/11/2026 y reproducido sin iniciar sesión. Los dos artículos individuales quedan preparados para su publicación por cada integrante.
