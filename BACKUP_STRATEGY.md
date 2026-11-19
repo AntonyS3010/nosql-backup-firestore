@@ -1,4 +1,4 @@
-# Estrategia de respaldo de Bitácora NoSQL
+# Estrategia de respaldo de Campus Tareas
 
 Equipo: Antony Piero Solorzano Zegarra y Adriana Rafaela Laos Gonzales.
 
@@ -42,10 +42,10 @@ RTO objetivo para el ensayo educativo: 5 minutos incluyendo preparación. La rec
 
 ## Automatización y estado
 
-`deploy.yml` prueba y compila; publica Firebase Hosting al configurar el proyecto y su secreto. `backup.yml` genera la copia cifrada y configura 7 días de retención. La existencia de YAML no acredita una ejecución: comprobar el job, descargar el artefacto y ensayar su recuperación.
+La app existente se publica en GitHub Pages mediante su propio `deploy.yml`; este repositorio no modifica ese despliegue. `check.yml` ensaya la recuperación. `backup.yml` genera la copia cifrada y configura 7 días de retención. La existencia de YAML no acredita una ejecución: comprobar el job, descargar el artefacto y ensayar su recuperación.
 
 Repositorio: https://github.com/AntonyS3010/nosql-backup-firestore
 
-Despliegue público, credenciales de nube, ejecución programada real, artículos y video público: pendientes de configuración y publicación. La aceptación de condiciones de Firebase corresponde al titular de la cuenta. No se ha activado facturación.
+La app existente está disponible en https://antonys3010.github.io/campus-tareas-nosql/ . Credenciales de lectura para el respaldo, ejecución programada real, nuevos artículos y video de backup: pendientes de configuración y publicación. No se modifica la app ni se activa facturación.
 
 Fuentes: https://firebase.google.com/docs/firestore/manage-data/export-import ; https://firebase.google.com/docs/firestore/reference/rest/v1/projects.databases.documents/runQuery ; https://docs.github.com/en/actions/tutorials/store-and-share-data
